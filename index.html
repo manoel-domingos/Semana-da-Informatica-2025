@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autenticação - Semana da Informática</title>
+    <!-- Incluindo o Tailwind CSS para estilização -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Usando a fonte Inter para um visual mais moderno -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Aplicando a fonte Inter ao corpo da página */
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Definindo a imagem de fundo */
+            background-image: url('https://online.ifmt.edu.br/pluginfile.php/1/theme_moove/loginbgimg/1753392594/sparkle.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Container principal que centraliza o conteúdo na tela -->
+    <div class="flex items-center justify-center min-h-screen p-4">
+
+        <!-- Card principal que conterá todas as telas -->
+        <div class="w-full max-w-md bg-white/90 backdrop-blur-sm rounded-xl shadow-lg dark:bg-gray-800/90 overflow-hidden">
+
+            <!-- TELA 1: Autenticação Inicial -->
+            <div id="initialView" class="p-8 space-y-8">
+                <!-- Título do Evento -->
+                <div class="text-center">
+                    <h1 class="text-2xl font-bold text-gray-900 dark:text-white">SEMANA DA INFORMÁTICA - 2025</h1>
+                </div>
+
+                <!-- Seção do botão SUAP -->
+                <div class="text-center">
+                    <h2 class="text-xl font-medium text-gray-800 dark:text-white">Autenticar usando sua conta em:</h2>
+                    
+                    <!-- Botão que mostra o formulário de login -->
+                    <button id="showLoginBtn" class="inline-flex items-center justify-center w-full px-4 py-3 mt-4 font-semibold text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">
+                        <img src="data:image/png;base64,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" alt="Logo SUAP" class="w-6 h-6 mr-3">
+                        Entrar com SUAP
+                    </button>
+                </div>
+                
+                <hr class="dark:border-gray-600">
+
+                <!-- Rodapé com idioma e cookies -->
+                <div class="flex items-center justify-between text-sm">
+                     <a href="#" class="text-blue-600 hover:underline dark:text-blue-400">Português - Brasil (pt_br) ✓</a>
+                     <button class="px-3 py-1 text-gray-600 bg-gray-200 rounded-md dark:bg-gray-600 dark:text-gray-300">Aviso de Cookies</button>
+                </div>
+            </div>
+
+            <!-- TELA 2: Formulário de Login (inicialmente escondida) -->
+            <div id="loginView" class="p-8 hidden">
+                <!-- Cabeçalho do formulário -->
+                <div class="text-center">
+                    <h1 class="text-3xl font-bold text-gray-900 dark:text-white">SEMANA DA INFORMÁTICA 2025</h1>
+                    <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">CiberSegurança</p>
+                </div>
+
+                <!-- Formulário de Login -->
+                <form id="loginForm" class="space-y-6 mt-6">
+                    <div>
+                        <label for="username" class="text-sm font-medium text-gray-700 dark:text-gray-300">Nome de Usuário</label>
+                        <input id="username" name="username" type="text" required class="w-full px-3 py-2 mt-1 text-gray-900 bg-gray-50/70 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700/70 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="seu.usuario">
+                    </div>
+                    <div>
+                        <label for="password" class="text-sm font-medium text-gray-700 dark:text-gray-300">Senha</label>
+                        <input id="password" name="password" type="password" required class="w-full px-3 py-2 mt-1 text-gray-900 bg-gray-50/70 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700/70 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="sua.senha">
+                    </div>
+                    <div>
+                        <button type="submit" class="w-full px-4 py-2 font-semibold text-white bg-blue-600 rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">
+                            Entrar
+                        </button>
+                    </div>
+                </form>
+                <div class="text-center mt-4">
+                    <button id="backBtn" class="text-sm text-blue-600 hover:underline dark:text-blue-400">← Voltar</button>
+                </div>
+            </div>
+
+            <!-- TELA 3: Avaliação de Segurança (inicialmente escondida) -->
+            <div id="evaluationView" class="p-8 hidden">
+                <div class="text-center">
+                    <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Avaliação de Segurança</h1>
+                    <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Responda para testar seus conhecimentos.</p>
+                </div>
+
+                <!-- Formulário de Avaliação -->
+                <form id="evaluationForm" class="space-y-6 mt-6 text-left text-gray-800 dark:text-gray-200">
+                    <!-- Pergunta 1 -->
+                    <fieldset>
+                        <legend class="font-medium">1. Você utiliza a mesma senha para vários sites ou serviços?</legend>
+                        <div class="mt-2 space-y-2">
+                            <label class="flex items-center"><input type="radio" name="q1" value="sim" class="mr-2" required> Sim</label>
+                            <label class="flex items-center"><input type="radio" name="q1" value="nao" class="mr-2"> Não</label>
+                        </div>
+                    </fieldset>
+                    <!-- Pergunta 2 -->
+                    <fieldset>
+                        <legend class="font-medium">2. Sua senha principal contém mais de 12 caracteres, incluindo letras maiúsculas, minúsculas, números e símbolos?</legend>
+                        <div class="mt-2 space-y-2">
+                            <label class="flex items-center"><input type="radio" name="q2" value="sim" class="mr-2" required> Sim</label>
+                            <label class="flex items-center"><input type="radio" name="q2" value="nao" class="mr-2"> Não</label>
+                        </div>
+                    </fieldset>
+                    <!-- Pergunta 3 -->
+                    <fieldset>
+                        <legend class="font-medium">3. Você utiliza autenticação de dois fatores (2FA/MFA) sempre que o serviço oferece?</legend>
+                        <div class="mt-2 space-y-2">
+                            <label class="flex items-center"><input type="radio" name="q3" value="sim" class="mr-2" required> Sim, sempre</label>
+                            <label class="flex items-center"><input type="radio" name="q3" value="as_vezes" class="mr-2"> Às vezes</label>
+                            <label class="flex items-center"><input type="radio" name="q3" value="nao" class="mr-2"> Não / Não sei o que é</label>
+                        </div>
+                    </fieldset>
+                    <!-- Botão de Enviar -->
+                    <div>
+                        <button type="submit" class="w-full px-4 py-2 font-semibold text-white bg-green-600 rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors duration-200">
+                            Enviar Avaliação
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- TELA 4: Mensagem Final (inicialmente escondida) -->
+            <div id="messageView" class="p-8 hidden">
+                 <div class="text-center py-16">
+                    <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Obrigado por participar!</h1>
+                    <p class="mt-2 text-gray-600 dark:text-gray-400">Sua segurança digital é muito importante.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Selecionando os elementos da interface
+        const initialView = document.getElementById('initialView');
+        const loginView = document.getElementById('loginView');
+        const evaluationView = document.getElementById('evaluationView');
+        const messageView = document.getElementById('messageView');
+
+        const showLoginBtn = document.getElementById('showLoginBtn');
+        const backBtn = document.getElementById('backBtn');
+        const loginForm = document.getElementById('loginForm');
+        const evaluationForm = document.getElementById('evaluationForm');
+
+        // Evento para mostrar o formulário de login
+        showLoginBtn.addEventListener('click', () => {
+            initialView.classList.add('hidden');
+            loginView.classList.remove('hidden');
+        });
+
+        // Evento para voltar para a tela inicial
+        backBtn.addEventListener('click', () => {
+            loginView.classList.add('hidden');
+            initialView.classList.remove('hidden');
+        });
+
+        // Evento para lidar com o envio do formulário de LOGIN
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            console.log('Dados do Login:', { usuario: username, senha: password });
+
+            // Mostra a tela de avaliação
+            loginView.classList.add('hidden');
+            evaluationView.classList.remove('hidden');
+        });
+
+        // Evento para lidar com o envio do formulário de AVALIAÇÃO
+        evaluationForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Coleta as respostas
+            const q1 = evaluationForm.elements['q1'].value;
+            const q2 = evaluationForm.elements['q2'].value;
+            const q3 = evaluationForm.elements['q3'].value;
+
+            console.log('Respostas da Avaliação:', {
+                reutiliza_senha: q1,
+                senha_forte: q2,
+                usa_2fa: q3
+            });
+
+            // Mostra a mensagem final
+            evaluationView.classList.add('hidden');
+            messageView.classList.remove('hidden');
+        });
+    </script>
+
+</body>
+</html>
