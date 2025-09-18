@@ -213,8 +213,12 @@
             await signInAnonymously(auth);
             console.log("Firebase inicializado e usuário anônimo autenticado.");
         } catch (error) {
-            console.error("Erro ao inicializar o Firebase. Verifique suas credenciais.", error);
-            alert("Não foi possível conectar ao servidor. A aplicação não funcionará corretamente.");
+            console.error("Erro ao inicializar o Firebase. Verifique suas credenciais e configurações.", error);
+            if (error.code === 'auth/configuration-not-found') {
+                 alert("Erro de Configuração: O método de login anônimo não está ativado no seu projeto Firebase. Por favor, vá até o Console do Firebase -> Authentication -> Sign-in method, e ative o provedor 'Anônimo'.");
+            } else {
+                alert("Não foi possível conectar ao servidor. A aplicação não funcionará corretamente. Verifique o console para mais detalhes.");
+            }
         }
         
         // =================================================================
@@ -389,4 +393,3 @@
     </script>
 </body>
 </html>
-
